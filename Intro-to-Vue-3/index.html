@@ -10,37 +10,24 @@
     <div id="app">
        <div class="nav-bar"></div>
       
-      <div class="cart">Cart({{ cart }})</div>
+      <div class="cart">Cart({{ cart.length }})</div>
+      <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
+      <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
+      <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
 
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img :class="{ 'out-of-stock-img': !inStock }" v-bind:src="image">
-          </div>
-          <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p v-if="inventory > 10">In Stock ({{ inventory }} left)</p>
-            <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold out ({{ inventory }} Left)</p>
-            <p v-else>Out of Stock ({{ inventory }} left)</p>
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
-            
-            <div  v-for="variant in variants"  :key="variant.id"  @mouseover="updateImage(variant.image)"  class="color-circle"  :style="{ backgroundColor: variant.color }">
-            </div>
-            
-            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" @click="addToCart">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-
-      <p>{{ description }}</p>
-      <h1>{{ counter }}</h1>
-      <button @click="increase">Increase</button>
-      <button @click="decrease" v-show="counter > 0">Decrease</button>
     </div>
 
     <!-- Import Js -->
-    <script src="./main.js"></script>
-  </body>
+    <script src="./main.js?v=1.2"></script>
+    
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
+
+    <script>
+      const mountApp = app.mount('#app')
+    </script>
+
+</body>
 </html>
