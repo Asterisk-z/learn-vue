@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Sock Store</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -10,7 +10,11 @@
   </head>
   <body>
     <div id="app">
-      <h1>Product goes here</h1>
+      <h1>{{ product }}</h1>
+      <p>{{ description }}</p>
+      <h1>{{ counter }}</h1>
+      <button @click="increase">Increase</button>
+      <button @click="decrease" v-show="counter > 0">Decrease</button>
     </div>
 
     <!-- Import Js -->
